@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet author="Max" id="create_author_table">
+        <createTable tableName="author" remarks="Таблица с данными об авторах" schemaName="example">
+            <column name="author_id" type="bigint" remarks="Уникальный идентификатор записи" autoIncrement="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)" remarks="Имя">
+                <constraints nullable="true"/>
+            </column>
+            <column name="age" type="numeric"
+                    remarks="Возраст">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <addPrimaryKey columnNames="author_id" tableName="author" constraintName="pk_author_id"/>
+        <rollback>
+            <dropTable  cascadeConstraints="true"
+                        catalogName="education"
+                        schemaName="example"
+                        tableName="author"/>
+        </rollback>
+        <comment>
+            Первичная инициализация таблицы author
+        </comment>
+
+        <loadData file="db/changelog/release-1.0.1/init_data.csv" tableName="author"/>
+    </changeSet>
+</databaseChangeLog>

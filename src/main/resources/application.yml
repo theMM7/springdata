@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: springdata
+  datasource:
+    url: jdbc:postgresql://localhost:5432/education
+    username: postgres
+    password: 12345
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+      schema: example
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none

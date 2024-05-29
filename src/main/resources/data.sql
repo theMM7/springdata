@@ -1,0 +1,8 @@
+-- INSERT INTO education.example.book (id, price, publish_date, title, author_id) VALUES (52, 9.99, '2023-08-31', 'Book A', 1);
+-- INSERT INTO education.example.book (id, price, publish_date, title, author_id) VALUES (53, 19.99, '2023-07-31', 'Book B', 2);
+-- INSERT INTO education.example.book (id, price, publish_date, title, author_id) VALUES (54, 29.99, '2023-06-10', 'Book C', 1);
+-- INSERT INTO education.example.book (id, price, publish_date, title, author_id) VALUES (55, 39.99, '2023-05-05', 'Book D', 3);
+--
+-- INSERT INTO example.author (age, author_id, name) values (25, 1, 'Креативный');
+-- INSERT INTO example.author (age, author_id, name) values (43, 2, 'Позитивный');
+-- INSERT INTO example.author (age, author_id, name) values (57, 3, 'Логичный');

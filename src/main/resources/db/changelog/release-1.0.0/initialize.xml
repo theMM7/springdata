@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet author="Max" id="create tables">
+        <sql>
+            CREATE TABLE IF NOT EXISTS example.book(
+                id           bigint not null primary key,
+                price        numeric(38, 2),
+                publish_date date,
+                title        varchar(255),
+                author_id    bigint
+            );
+
+            COMMENT ON COLUMN example.book.id IS 'Уникальный ключ записи';
+            COMMENT ON COLUMN example.book.price IS 'Цена';
+            COMMENT ON COLUMN example.book.publish_date IS 'Дата публикации';
+            COMMENT ON COLUMN example.book.title IS 'Заголовок';
+            COMMENT ON COLUMN example.book.author_id IS 'id автора';
+        </sql>
+        <rollback>
+            DROP TABLE example.book;
+        </rollback>
+        <comment>
+            Первичная инициализация таблицы book
+        </comment>
+
+        <loadData file="db/changelog/release-1.0.0/initialize_data.csv" tableName="book"/>
+    </changeSet>
+
+</databaseChangeLog>
